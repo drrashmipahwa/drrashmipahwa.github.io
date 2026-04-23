@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dry Eye Therapeutics — India Market Directory | Dr. Rashmi Pahwa, MD</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#f5f6f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#f0f2f5}::-webkit-scrollbar-thumb{background:#c0c8d4;border-radius:3px}table{border-spacing:0}</style>
+</head><body><div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script>
+const{useState,useCallback}=React;
+// ─── BRAND PALETTE (matches Red Eye Triage Algorithm) ───
+const C = {
+  bg: "#f5f6f8",
+  card: "#ffffff",
+  cardAlt: "#fafbfc",
+  navy: "#1e3a5f",
+  navyLight: "#2d5a8a",
+  coral: "#e8634a",
+  coralLight: "#fef2ef",
+  teal: "#0d9488",
+  tealLight: "#e6f7f5",
+  text: "#1e3a5f",
+  textSec: "#5a6b7f",
+  textMuted: "#8a97a8",
+  border: "#e2e8f0",
+  borderLight: "#f0f2f5",
+  warning: "#e8964a",
+  warningLight: "#fef8ee",
+  danger: "#dc2626",
+  dangerLight: "#fef2f2",
+  green: "#16a34a",
+  greenLight: "#f0fdf4",
+  purple: "#6d5cae",
+  purpleLight: "#f3f0ff"
+};
+
+// ─── BRAND LOGO (identical to Red Eye Triage) ───
+function BrandLogo() {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 10
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "40",
+    height: "40",
+    viewBox: "-56 -56 112 112",
+    fill: "none"
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: "0",
+    cy: "0",
+    r: "50",
+    stroke: "#1e3a5f",
+    strokeWidth: "5.5",
+    fill: "none"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M-44 -24 A50 50 0 0 1 44 -24",
+    fill: "none",
+    stroke: "#e8634a",
+    strokeWidth: "5.5",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "0",
+    cy: "0",
+    r: "28",
+    fill: "#1e3a5f"
+  }), /*#__PURE__*/React.createElement("text", {
+    x: "0",
+    y: "12",
+    textAnchor: "middle",
+    fontFamily: "Georgia, serif",
+    fontSize: "36",
+    fontWeight: "700",
+    fill: "white"
+  }, "R"), /*#__PURE__*/React.createElement("circle", {
+    cx: "10",
+    cy: "-10",
+    r: "4",
+    fill: "white",
+    opacity: "0.25"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "12",
+    cy: "-8",
+    r: "1.5",
+    fill: "white",
+    opacity: "0.6"
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 14,
+      fontWeight: 700,
+      color: C.navy
+    }
+  }, "Dr. Rashmi Pahwa, MD"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: C.coral,
+      fontWeight: 600,
+      letterSpacing: 1.5,
+      textTransform: "uppercase"
+    }
+  }, "Clinical Tools for Eye Care Professionals")));
+}
+
+// ─── DATA ───
+const CATEGORIES = [{
+  id: "cmc",
+  name: "CMC (Carboxymethylcellulose)",
+  icon: "💧",
+  color: C.navyLight,
+  science: "Binds to corneal epithelial cells via mucin-like adhesion. Supplements the aqueous layer. Residence time ~20–30 min. Standard: 0.5% (drops), 1% (gel drops). CMC 1% provides longer retention due to higher viscosity. Evidence: FDA-approved demulcent; RCTs show OSDI improvement comparable to HA at mild-moderate severity. Purite (stabilized oxychloro complex) is a milder preservative than BAK — breaks down to NaCl on the eye. At 1% concentration, CMC exhibits gel-like properties with significantly longer precorneal residence.",
+  brands: [{
+    brand: "Refresh Tears",
+    mfr: "Allergan",
+    composition: "CMC 0.5%",
+    pf: "No (Purite)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹132",
+    dryEye: "ADDE",
+    special: "Originator brand. Most widely prescribed CMC in India."
+  }, {
+    brand: "Refresh Plus",
+    mfr: "Allergan",
+    composition: "CMC 0.5%",
+    pf: "✅ PF (vials)",
+    form: "Unit-dose vials",
+    pack: "30×0.4 mL",
+    price: "₹450–550*",
+    dryEye: "ADDE / Post-op",
+    special: "PF single-use. Gold standard for sensitive/post-op eyes."
+  }, {
+    brand: "Refresh Tears PF",
+    mfr: "Allergan",
+    composition: "CMC 0.5%",
+    pf: "✅ PF (vials)",
+    form: "Unit-dose vials",
+    pack: "30×0.4 mL",
+    price: "₹450–550",
+    dryEye: "ADDE / Post-op",
+    special: "PF vials for frequent dosing or BAK sensitivity."
+  }, {
+    brand: "Refresh Liquigel",
+    mfr: "Allergan",
+    composition: "CMC 1%",
+    pf: "No (Purite)",
+    form: "Gel drops",
+    pack: "10 mL",
+    price: "₹177",
+    dryEye: "ADDE (mod-severe)",
+    special: "Higher viscosity gel. Longer retention than 0.5%."
+  }, {
+    brand: "Refresh Celluvisc",
+    mfr: "Allergan",
+    composition: "CMC 1%",
+    pf: "✅ PF (vials)",
+    form: "Unit-dose gel vials",
+    pack: "30×0.4 mL",
+    price: "₹600–700*",
+    dryEye: "Severe ADDE / Post-op",
+    special: "Extra-strength PF gel. Thickest CMC. Import/specialty."
+  }, {
+    brand: "Refresh Contacts",
+    mfr: "Allergan",
+    composition: "CMC 0.5% (CL-safe)",
+    pf: "No (Purite)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹150–180",
+    dryEye: "Contact lens DED",
+    special: "Formulated for use ON contact lenses."
+  }, {
+    brand: "Flogel",
+    mfr: "Cipla",
+    composition: "CMC 1%",
+    pf: "No (Purite)",
+    form: "Gel drops",
+    pack: "10 mL",
+    price: "₹138–177",
+    dryEye: "ADDE (mod-severe)",
+    special: "Cipla's Refresh Liquigel equivalent."
+  }, {
+    brand: "Tear Drops",
+    mfr: "Sun Pharma",
+    composition: "CMC 0.5%",
+    pf: "No (BAK)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹90–110",
+    dryEye: "ADDE",
+    special: "Sun Pharma CMC. Budget option."
+  }]
+}, {
+  id: "hpmc",
+  name: "HPMC (Hydroxypropyl Methylcellulose)",
+  icon: "🫧",
+  color: C.teal,
+  science: "Cellulose derivative that increases tear viscosity and reduces evaporation. Shorter residence time (~15–20 min) than CMC. Standard: 0.3%. Lower cost. Less mucoadhesive than CMC — better tolerated but shorter retention. Also used as surgical viscoelastic (2%). Best for mild, infrequent symptoms. Dextran 70 (in Tears Naturale) adds mucomimetic properties for modest retention boost.",
+  brands: [{
+    brand: "Moisol",
+    mfr: "FDC Ltd",
+    composition: "HPMC 0.3%",
+    pf: "No (BAK)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹49–65",
+    dryEye: "ADDE (mild)",
+    special: "★ Most affordable artificial tear in India."
+  }, {
+    brand: "Genteal",
+    mfr: "Alcon",
+    composition: "HPMC 0.3%",
+    pf: "No (GenAqua)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹120–140",
+    dryEye: "ADDE (mild)",
+    special: "GenAqua preservative (milder than BAK)."
+  }, {
+    brand: "Tears Naturale II",
+    mfr: "Alcon",
+    composition: "Dextran 70 0.1% + HPMC 0.3%",
+    pf: "No (Polyquad)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹90–110",
+    dryEye: "General (mild)",
+    special: "Classic dual-polymer. Polyquad (least toxic preservative)."
+  }, {
+    brand: "Tears Plus",
+    mfr: "Alcon",
+    composition: "HPMC 0.3% + Dextran 70",
+    pf: "No (BAK)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹80–95",
+    dryEye: "General (mild)",
+    special: "Budget Alcon HPMC+Dextran."
+  }, {
+    brand: "Eyemist",
+    mfr: "Sun Pharma",
+    composition: "HPMC 0.3%",
+    pf: "No (BAK)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹85–100",
+    dryEye: "General (mild)",
+    special: "Sun Pharma's primary lubricant."
+  }, {
+    brand: "Eyemist Forte",
+    mfr: "Sun Pharma",
+    composition: "HPMC 0.3%",
+    pf: "No (BAK)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹185–200",
+    dryEye: "General (mild-mod)",
+    special: "Enhanced HPMC formulation."
+  }]
+}, {
+  id: "ha",
+  name: "Sodium Hyaluronate (HA)",
+  icon: "✨",
+  color: C.purple,
+  science: "Naturally occurring glycosaminoglycan. Binds CD44 receptors on corneal epithelium → promotes healing. 1g holds ~6L water. Viscoelastic shear-thinning: thick at rest (protects), thins during blink (comfort). Residence 2–3× longer than CMC. 0.1% = light everyday, 0.15% = moderate, 0.18% = higher, 0.2% = gel-like. Meta-analysis (17 RCTs, 3363 pts): HA superior to CMC for TBUT and Schirmer. COMOD = airless pump — inherently PF without single-use waste, ~300 calibrated drops/bottle.",
+  brands: [{
+    brand: "HyloSOFT (COMOD)",
+    mfr: "Neomedix",
+    composition: "Sodium HA 0.1%",
+    pf: "✅ PF (COMOD)",
+    form: "Multidose drops",
+    pack: "10 mL",
+    price: "₹435",
+    dryEye: "General / Post-op",
+    special: "★ Best value PF multidose. COMOD airless pump."
+  }, {
+    brand: "Hylo Fresh",
+    mfr: "Neomedix",
+    composition: "Sodium HA 0.1%",
+    pf: "✅ PF (COMOD)",
+    form: "Multidose drops",
+    pack: "10 mL",
+    price: "₹280–310",
+    dryEye: "General (mild-mod)",
+    special: "Lighter HA in COMOD. Good first-line PF."
+  }, {
+    brand: "Hylo Gel",
+    mfr: "Neomedix",
+    composition: "Sodium HA 0.2%",
+    pf: "✅ PF (COMOD)",
+    form: "Gel drops",
+    pack: "10 mL",
+    price: "₹520–580",
+    dryEye: "Severe DED",
+    special: "Higher viscosity HA gel. 3× residence vs 0.1%."
+  }, {
+    brand: "Soha",
+    mfr: "Sun Pharma",
+    composition: "Sodium HA 0.18%",
+    pf: "No (BAK)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹180–220",
+    dryEye: "General (moderate)",
+    special: "Higher HA concentration at budget price."
+  }, {
+    brand: "Flogel HA",
+    mfr: "Cipla",
+    composition: "Sodium HA 0.1%",
+    pf: "No",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹453",
+    dryEye: "General (moderate)",
+    special: "Cipla's HA offering."
+  }, {
+    brand: "Hymoist",
+    mfr: "FDC Ltd",
+    composition: "Sodium HA 0.1%",
+    pf: "No",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹514",
+    dryEye: "General (moderate)",
+    special: "FDC premium HA."
+  }]
+}, {
+  id: "peg",
+  name: "PEG/PG + HP-Guar Systems",
+  icon: "🛡️",
+  color: C.green,
+  science: "PEG 400 + Propylene Glycol supplement aqueous layer. HP-Guar (hydroxypropyl guar) is the key innovation: pH-sensitive gellan that transforms from liquid → cross-linked gel on the eye surface (pH 7.0–7.4), forming a protective matrix. Extends residence 2–3× vs standard drops. Best evidence base among all lubricants (decade of SPEED, OSDI studies). Particularly effective for digital eye strain — counters reduced blink rate (4–6×/min screen use vs normal 15–20×/min).",
+  brands: [{
+    brand: "Systane Ultra",
+    mfr: "Alcon",
+    composition: "PEG 400 + PG + HP-Guar",
+    pf: "No (Polyquad)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹494–562",
+    dryEye: "General / Screen users",
+    special: "★ Most evidence-backed lubricant. HP-Guar tech."
+  }, {
+    brand: "Systane Ultra PF",
+    mfr: "Alcon",
+    composition: "PEG 400 + PG + HP-Guar",
+    pf: "✅ PF (vials)",
+    form: "Unit-dose vials",
+    pack: "30×0.7 mL",
+    price: "₹650–700",
+    dryEye: "General / Post-op",
+    special: "PF version for frequent dosing."
+  }, {
+    brand: "Systane Hydration",
+    mfr: "Alcon",
+    composition: "PEG 400 + PG + HA 0.1%",
+    pf: "No (Polyquad)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹534",
+    dryEye: "Mixed (mod-severe)",
+    special: "HP-Guar + HA dual-technology."
+  }, {
+    brand: "Flogel Ultra",
+    mfr: "Cipla",
+    composition: "PEG 400 + PG",
+    pf: "No",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹411–453",
+    dryEye: "General (moderate)",
+    special: "Cipla Systane alternative. ~20% cheaper."
+  }]
+}, {
+  id: "lipid",
+  name: "Lipid-Based / EDE-Targeted",
+  icon: "🛢️",
+  color: C.warning,
+  science: "Target lipid layer deficiency in evaporative dry eye (EDE) / MGD. Nano-emulsions restore outer lipid layer, reducing evaporation by up to 40%. Nano-lipid (Systane Complete) creates uniform lipid layer. LipiTech (Systane Balance) uses liposomal delivery. Flaxseed + castor oil (Refresh Optive Mega-3) add omega-3 bioactive lipids + trehalose. These are the ONLY OTC drops addressing root cause of EDE. Critical: ~86% of DED patients have an MGD component.",
+  brands: [{
+    brand: "Systane Complete",
+    mfr: "Alcon",
+    composition: "PEG 400 + PG + HP-Guar + Nano-lipid",
+    pf: "No (Polyquad)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹721",
+    dryEye: "Mixed / EDE",
+    special: "★ Only nano-lipid drop. Aqueous + lipid layers."
+  }, {
+    brand: "Systane Balance",
+    mfr: "Alcon",
+    composition: "Mineral oil + LipiTech",
+    pf: "No (Polyquad)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹650–700",
+    dryEye: "EDE / MGD",
+    special: "Targets lipid layer via liposomal delivery."
+  }, {
+    brand: "Refresh Optive Advanced",
+    mfr: "Allergan",
+    composition: "CMC 0.5% + Glycerin 0.9% + castor oil",
+    pf: "No (Purite)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹350–400*",
+    dryEye: "Mixed (ADDE+EDE)",
+    special: "Triple-action: aqueous + osmotic + lipid."
+  }, {
+    brand: "Refresh Optive Mega-3",
+    mfr: "Allergan",
+    composition: "CMC 0.5% + Glycerin 1% + Polysorbate 80 + flaxseed oil + trehalose",
+    pf: "✅ PF (vials)",
+    form: "Unit-dose vials",
+    pack: "30×0.4 mL",
+    price: "₹1500–1800*",
+    dryEye: "EDE / MGD / Mixed",
+    special: "★ Most advanced Refresh. Nano-emulsion lipids + trehalose. Import."
+  }]
+}, {
+  id: "combo",
+  name: "Osmoprotectant & Combination",
+  icon: "🧬",
+  color: C.coral,
+  science: "Osmoprotectants (L-carnitine, erythritol, glycerin, trehalose) protect corneal cells against hyperosmolar damage — key DED inflammation driver. Tear hyperosmolarity (>308 mOsm/L) → MAPK/NF-κB → apoptosis → inflammation. Trehalose: natural disaccharide bioprotectant (tardigrades!). Trehalose + HA extends relief ~6× vs HA alone. CMC + HA (Refresh Relieva) synergistic: HA water-binding + CMC mucoadhesion.",
+  brands: [{
+    brand: "Refresh Optive",
+    mfr: "Allergan",
+    composition: "CMC 0.5% + Glycerin 0.9%",
+    pf: "No (Purite)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹280–320",
+    dryEye: "Mixed / Osmotic DED",
+    special: "Patented osmoprotectants: L-carnitine + erythritol."
+  }, {
+    brand: "Refresh Optive PF",
+    mfr: "Allergan",
+    composition: "CMC 0.5% + Glycerin 0.9%",
+    pf: "✅ PF (vials)",
+    form: "Unit-dose vials",
+    pack: "30×0.4 mL",
+    price: "₹500–600*",
+    dryEye: "Mixed / Post-op",
+    special: "PF Optive. Import/specialty."
+  }, {
+    brand: "Refresh Optive Gel",
+    mfr: "Allergan",
+    composition: "CMC 1% + Glycerin 0.9% (gel)",
+    pf: "No (Purite)",
+    form: "Gel drops",
+    pack: "10 mL",
+    price: "₹250–300*",
+    dryEye: "Moderate-Severe / Nighttime",
+    special: "Gel viscosity + osmoprotection."
+  }, {
+    brand: "Refresh Relieva",
+    mfr: "Allergan",
+    composition: "CMC 0.5% + HA 0.1%",
+    pf: "No (Purite)",
+    form: "Drops",
+    pack: "10 mL",
+    price: "₹400–500*",
+    dryEye: "General (mod-severe)",
+    special: "★ Dual-polymer: CMC mucoadhesion + HA water-binding."
+  }, {
+    brand: "Refresh Relieva PF",
+    mfr: "Allergan",
+    composition: "CMC 0.5% + HA 0.1%",
+    pf: "✅ PF (vials)",
+    form: "Unit-dose vials",
+    pack: "30×0.4 mL",
+    price: "₹600–800*",
+    dryEye: "General / Post-op",
+    special: "PF CMC+HA combo. Import only."
+  }]
+}, {
+  id: "gel",
+  name: "Gel / Ointment (Nighttime & Severe)",
+  icon: "🌊",
+  color: C.navyLight,
+  science: "Carbomer gels provide longest residence (hours). High viscosity = sustained protection but transient blur (2–5 min). Best at bedtime. Petrolatum ointments (Lacri-Lube, Refresh PM) = maximum overnight barrier, significant blur, bedtime only. HA 0.2% gel (Hylo Gel) = PF gel with less blur than carbomer.",
+  brands: [{
+    brand: "Systane Gel Drops",
+    mfr: "Alcon",
+    composition: "PEG 400 + PG (gel viscosity)",
+    pf: "No (Polyquad)",
+    form: "Gel drops",
+    pack: "10 mL",
+    price: "₹550–600",
+    dryEye: "Severe DED / Nighttime",
+    special: "Gel-viscosity drops. Ideal bedtime use."
+  }, {
+    brand: "Systane Nighttime",
+    mfr: "Alcon",
+    composition: "Mineral oil + white petrolatum",
+    pf: "✅ PF",
+    form: "Ointment",
+    pack: "3.5 g",
+    price: "₹350–450*",
+    dryEye: "Severe / Nighttime only",
+    special: "Thick ointment for overnight protection."
+  }, {
+    brand: "Genteal Gel",
+    mfr: "Alcon",
+    composition: "HPMC + Carbomer 980 (gel)",
+    pf: "No (GenAqua)",
+    form: "Gel drops",
+    pack: "10 mL",
+    price: "₹180–220",
+    dryEye: "Severe DED / Nighttime",
+    special: "★ Best value gel. Hours of relief."
+  }, {
+    brand: "Lacri-Lube",
+    mfr: "Allergan",
+    composition: "Petrolatum 56.8% + mineral oil 42.5%",
+    pf: "✅ PF",
+    form: "Ointment",
+    pack: "3.5 g",
+    price: "₹250–350",
+    dryEye: "Severe / Nighttime only",
+    special: "Classic overnight ointment."
+  }, {
+    brand: "Refresh PM",
+    mfr: "Allergan",
+    composition: "Petrolatum 56.8% + mineral oil 41.5%",
+    pf: "✅ PF",
+    form: "Ointment",
+    pack: "3.5 g",
+    price: "₹300–400*",
+    dryEye: "Severe / Nighttime only",
+    special: "Allergan overnight ointment. Import."
+  }, {
+    brand: "Hylo Gel",
+    mfr: "Neomedix",
+    composition: "Sodium HA 0.2%",
+    pf: "✅ PF (COMOD)",
+    form: "Gel drops",
+    pack: "10 mL",
+    price: "₹520–580",
+    dryEye: "Severe DED",
+    special: "PF HA gel in COMOD. Less blur than carbomer."
+  }]
+}, {
+  id: "rx_novel",
+  name: "Rx Innovations — Novel Mechanisms",
+  icon: "🔬",
+  color: C.danger,
+  science: "TRPM8 agonist (Tryptyr): activates cold-sensing receptors → trigeminal reflex → natural tear production Day 1. Anti-evaporative (Miebo): SFA monolayer prevents evaporation. Water-free CsA (Vevye): 5× corneal penetration vs Restasis. LFA-1 antagonist (Xiidra): blocks T-cell inflammation. Nasal spray (Tyrvaya): trigeminal parasympathetic → tear+mucin+oil. Short-pulse steroid (Eysuvis): MPP nanoparticle loteprednol for DED flares. Secretagogues: Diquafosol (P2Y2 agonist) + Rebamipide (MUC1/4/16 upregulation).",
+  brands: [{
+    brand: "Tryptyr (acoltremon)",
+    mfr: "Alcon",
+    composition: "Acoltremon 0.003%",
+    pf: "✅ PF (vials)",
+    form: "Vials BID",
+    pack: "60×vials",
+    price: "$867 US*",
+    dryEye: "All DED subtypes",
+    special: "★★ FIRST TRPM8 agonist. FDA May 2025. Natural tears Day 1. COMET-2: 43% ≥10mm Schirmer (vs 8%). NOT IN INDIA."
+  }, {
+    brand: "Miebo",
+    mfr: "Bausch+Lomb",
+    composition: "Perfluorohexyloctane 100%",
+    pf: "✅ PF",
+    form: "Drops QID",
+    pack: "3.5 mL",
+    price: "$500–600 US*",
+    dryEye: "EDE / MGD",
+    special: "★ FIRST anti-evaporative Rx. SFA monolayer on tear film. FDA 2023. NOT IN INDIA."
+  }, {
+    brand: "Vevye",
+    mfr: "Novaliq/Harrow",
+    composition: "CsA 0.1% in perfluorobutylpentane",
+    pf: "✅ PF",
+    form: "Drops BID",
+    pack: "5.2 mL",
+    price: "$600–700 US*",
+    dryEye: "Moderate-Severe DED",
+    special: "Water-free CsA. 71.6% response 4 weeks. FDA 2023. NOT IN INDIA."
+  }, {
+    brand: "Xiidra (lifitegrast)",
+    mfr: "Novartis",
+    composition: "Lifitegrast 5%",
+    pf: "✅ PF (vials)",
+    form: "Vials BID",
+    pack: "60×vials",
+    price: "$500+ US*",
+    dryEye: "Moderate-Severe DED",
+    special: "LFA-1/ICAM-1 inhibitor. FDA 2016. NOT IN INDIA."
+  }, {
+    brand: "Tyrvaya (varenicline)",
+    mfr: "Viatris",
+    composition: "Varenicline 0.03 mg",
+    pf: "N/A",
+    form: "NASAL SPRAY BID",
+    pack: "30-day",
+    price: "$600+ US*",
+    dryEye: "All DED subtypes",
+    special: "★ NASAL spray — not drops. Trigeminal pathway. FDA 2021. NOT IN INDIA."
+  }, {
+    brand: "Eysuvis",
+    mfr: "Bausch+Lomb",
+    composition: "Loteprednol 0.25% MPP",
+    pf: "✅ PF",
+    form: "Vials QID×2wk",
+    pack: "28×vials",
+    price: "$300+ US*",
+    dryEye: "DED flares",
+    special: "Short-course steroid. MPP nanoparticle. Low IOP risk. FDA 2020."
+  }, {
+    brand: "Diquas",
+    mfr: "Santen",
+    composition: "Diquafosol 3%",
+    pf: "No",
+    form: "Drops 6×/day",
+    pack: "5 mL",
+    price: "₹800–1200*",
+    dryEye: "ADDE+EDE / Short-TBUT",
+    special: "P2Y2 agonist. Aqueous+mucin secretion. Approved Japan/Korea."
+  }, {
+    brand: "Rebamipide 2%",
+    mfr: "Various",
+    composition: "Rebamipide 2% suspension",
+    pf: "No",
+    form: "Suspension QID",
+    pack: "5 mL",
+    price: "₹400–600*",
+    dryEye: "Mucin-deficient DED",
+    special: "Mucin secretagogue. IJO 2023 Indian trial positive."
+  }]
+}, {
+  id: "rx_csa",
+  name: "Rx Anti-Inflammatory — Cyclosporine",
+  icon: "💊",
+  color: C.purple,
+  science: "CsA = calcineurin inhibitor → suppresses T-cell activation → reduces IL-2/IL-6/IFN-γ → breaks DED inflammation cycle → restores lacrimal function → increases tears. Takes 3–6 months (steroid bridge 2–4 weeks). No systemic immunosuppression — no detectable blood levels. Cyclomune (Sun Pharma) = most affordable CsA globally. Cequa nanomicellar = 3× corneal penetration vs Restasis.",
+  brands: [{
+    brand: "Cyclomune 0.05%",
+    mfr: "Sun Pharma",
+    composition: "Cyclosporine 0.05%",
+    pf: "No",
+    form: "Drops BID",
+    pack: "3 mL",
+    price: "₹458",
+    dryEye: "Moderate-Severe ADDE",
+    special: "★ Most prescribed CsA in India. Step 2 cornerstone."
+  }, {
+    brand: "Cyclomune 0.1%",
+    mfr: "Sun Pharma",
+    composition: "Cyclosporine 0.1%",
+    pf: "No",
+    form: "Drops BID",
+    pack: "3 mL",
+    price: "₹550–650",
+    dryEye: "Severe ADDE",
+    special: "Higher concentration for severe/refractory DED."
+  }, {
+    brand: "Cequa",
+    mfr: "Sun Pharma",
+    composition: "Cyclosporine 0.09% nanomicellar",
+    pf: "✅ PF (vials)",
+    form: "Vials BID",
+    pack: "60×vials",
+    price: "₹800–1000*",
+    dryEye: "Moderate-Severe ADDE",
+    special: "NCELL tech → 3× corneal CsA penetration."
+  }, {
+    brand: "Restasis",
+    mfr: "Allergan",
+    composition: "Cyclosporine 0.05% emulsion",
+    pf: "✅ PF (vials)",
+    form: "Vials BID",
+    pack: "30×0.4 mL",
+    price: "₹600–800*",
+    dryEye: "Moderate-Severe ADDE",
+    special: "Original FDA CsA (2002). Import in India."
+  }]
+}];
+const BADGES = {
+  ADDE: {
+    bg: "#dbeafe",
+    text: "#1d4ed8"
+  },
+  EDE: {
+    bg: "#fef3c7",
+    text: "#b45309",
+    label: "EDE/MGD"
+  },
+  Mixed: {
+    bg: "#ede9fe",
+    text: "#6d28d9"
+  },
+  General: {
+    bg: C.tealLight,
+    text: C.teal
+  },
+  "Post-op": {
+    bg: "#fce7f3",
+    text: "#be185d"
+  },
+  CL: {
+    bg: "#e0f2fe",
+    text: "#0369a1",
+    label: "CL-DED"
+  },
+  Severe: {
+    bg: C.dangerLight,
+    text: C.danger
+  },
+  Night: {
+    bg: C.purpleLight,
+    text: C.purple,
+    label: "Nighttime"
+  },
+  Screen: {
+    bg: C.greenLight,
+    text: C.green
+  },
+  All: {
+    bg: C.cardAlt,
+    text: C.text,
+    label: "All types"
+  },
+  Flare: {
+    bg: C.warningLight,
+    text: C.warning
+  }
+};
+function getBadges(s) {
+  const b = [],
+    l = s.toLowerCase();
+  if (l.includes("all ded")) b.push("All");
+  if (l.includes("adde") && !b.includes("All")) b.push("ADDE");
+  if ((l.includes("ede") || l.includes("mgd")) && !b.includes("All")) b.push("EDE");
+  if (l.includes("mixed")) b.push("Mixed");
+  if (l.includes("general") && !b.length) b.push("General");
+  if (l.includes("post-op")) b.push("Post-op");
+  if (l.includes("contact") || l.includes("cl ")) b.push("CL");
+  if (l.includes("severe")) b.push("Severe");
+  if (l.includes("night") || l.includes("bedtime")) b.push("Night");
+  if (l.includes("screen")) b.push("Screen");
+  if (l.includes("flare")) b.push("Flare");
+  if (!b.length) b.push("General");
+  return [...new Set(b)];
+}
+
+// ─── MAIN APP ───
+function App() {
+  const [expanded, setExpanded] = useState(new Set(["cmc"]));
+  const [search, setSearch] = useState("");
+  const [pfOnly, setPfOnly] = useState(false);
+  const [science, setScience] = useState(new Set());
+  const tog = (set, id) => {
+    const n = new Set(set);
+    n.has(id) ? n.delete(id) : n.add(id);
+    return n;
+  };
+  const filtered = CATEGORIES.map(cat => ({
+    ...cat,
+    brands: cat.brands.filter(b => {
+      const ms = !search || [b.brand, b.mfr, b.composition, b.dryEye, b.special].some(f => f.toLowerCase().includes(search.toLowerCase()));
+      return ms && (!pfOnly || b.pf.includes("PF") || b.pf.includes("✅"));
+    })
+  })).filter(c => c.brands.length > 0);
+  const total = filtered.reduce((a, c) => a + c.brands.length, 0);
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif",
+      background: C.bg,
+      minHeight: "100vh",
+      color: C.text
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "#fff",
+      borderBottom: `3px solid ${C.coral}`,
+      padding: "16px 20px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: 900,
+      margin: "0 auto",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      flexWrap: "wrap",
+      gap: 12
+    }
+  }, /*#__PURE__*/React.createElement(BrandLogo, null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "right"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: C.textMuted,
+      fontWeight: 600,
+      letterSpacing: 1.5,
+      textTransform: "uppercase"
+    }
+  }, "For clinicians & industry"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: C.navy,
+      fontWeight: 700
+    }
+  }, "Evidence-Based Product Reference")))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: C.navy,
+      padding: "20px 20px 16px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: 900,
+      margin: "0 auto"
+    }
+  }, /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontSize: 22,
+      fontWeight: 700,
+      color: "#fff",
+      margin: "0 0 4px"
+    }
+  }, "Dry Eye Therapeutics \u2014 ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: C.coral
+    }
+  }, "India Market Directory")), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 12,
+      color: "#a0b4c8",
+      margin: 0
+    }
+  }, total, " products \xB7 Allergan \xB7 Alcon \xB7 Cipla \xB7 FDC \xB7 Sun Pharma \xB7 Neomedix + Global Innovations"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: 900,
+      margin: "16px auto 0",
+      padding: "0 20px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8,
+      marginBottom: 14,
+      flexWrap: "wrap",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "Search brand, company, composition...",
+    value: search,
+    onChange: e => setSearch(e.target.value),
+    style: {
+      flex: 1,
+      minWidth: 200,
+      padding: "10px 14px",
+      border: `1px solid ${C.border}`,
+      borderRadius: 10,
+      fontSize: 13,
+      outline: "none",
+      background: "#fff",
+      color: C.text
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setPfOnly(!pfOnly),
+    style: {
+      padding: "10px 16px",
+      borderRadius: 10,
+      border: pfOnly ? `2px solid ${C.teal}` : `1px solid ${C.border}`,
+      background: pfOnly ? C.tealLight : "#fff",
+      color: pfOnly ? C.teal : C.textMuted,
+      fontSize: 12,
+      fontWeight: 600,
+      cursor: "pointer"
+    }
+  }, pfOnly ? "✅ PF Only" : "🔓 All"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setExpanded(new Set(CATEGORIES.map(c => c.id))),
+    style: {
+      padding: "10px 12px",
+      borderRadius: 10,
+      border: `1px solid ${C.border}`,
+      background: "#fff",
+      fontSize: 11,
+      cursor: "pointer",
+      color: C.textSec
+    }
+  }, "Expand All"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setExpanded(new Set()),
+    style: {
+      padding: "10px 12px",
+      borderRadius: 10,
+      border: `1px solid ${C.border}`,
+      background: "#fff",
+      fontSize: 11,
+      cursor: "pointer",
+      color: C.textSec
+    }
+  }, "Collapse")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap",
+      marginBottom: 16,
+      padding: "8px 14px",
+      background: "#fff",
+      borderRadius: 10,
+      border: `1px solid ${C.border}`
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 9,
+      color: C.textMuted,
+      fontWeight: 700,
+      letterSpacing: 1.5,
+      textTransform: "uppercase",
+      marginRight: 4
+    }
+  }, "Dry Eye Types:"), Object.entries(BADGES).map(([k, v]) => /*#__PURE__*/React.createElement("span", {
+    key: k,
+    style: {
+      fontSize: 9,
+      padding: "2px 8px",
+      borderRadius: 20,
+      background: v.bg,
+      color: v.text,
+      fontWeight: 600
+    }
+  }, v.label || k))), filtered.map(cat => {
+    const isOpen = expanded.has(cat.id);
+    const sciOpen = science.has(cat.id);
+    return /*#__PURE__*/React.createElement("div", {
+      key: cat.id,
+      style: {
+        marginBottom: 14,
+        borderRadius: 12,
+        overflow: "hidden",
+        border: `1px solid ${C.border}`,
+        background: "#fff"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      onClick: () => setExpanded(s => tog(s, cat.id)),
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        padding: "14px 18px",
+        cursor: "pointer",
+        background: isOpen ? `${cat.color}0c` : "#fff",
+        borderBottom: isOpen ? `2px solid ${cat.color}44` : "none"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 22
+      }
+    }, cat.icon), /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 700,
+        color: cat.color
+      }
+    }, cat.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: C.textMuted
+      }
+    }, cat.brands.length, " product", cat.brands.length !== 1 ? "s" : "")), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 18,
+        color: cat.color,
+        transform: isOpen ? "rotate(180deg)" : "none",
+        transition: "transform 0.2s"
+      }
+    }, "\u25BE")), isOpen && /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: "0 6px 12px"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: "8px 12px"
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: e => {
+        e.stopPropagation();
+        setScience(s => tog(s, cat.id));
+      },
+      style: {
+        padding: "6px 14px",
+        borderRadius: 8,
+        border: `1px solid ${cat.color}44`,
+        background: sciOpen ? `${cat.color}11` : "transparent",
+        color: cat.color,
+        fontSize: 11,
+        fontWeight: 600,
+        cursor: "pointer"
+      }
+    }, sciOpen ? "▾ Hide" : "▸ Show", " Ingredient Science & MOA"), sciOpen && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 10,
+        padding: "12px 16px",
+        background: C.cardAlt,
+        borderRadius: 10,
+        border: `1px solid ${C.border}`,
+        fontSize: 12,
+        color: C.text,
+        lineHeight: 1.7
+      }
+    }, "\uD83E\uDDEA ", /*#__PURE__*/React.createElement("strong", {
+      style: {
+        color: cat.color
+      }
+    }, "Clinical Facts:"), " ", cat.science)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        overflowX: "auto"
+      }
+    }, /*#__PURE__*/React.createElement("table", {
+      style: {
+        width: "100%",
+        borderCollapse: "collapse",
+        fontSize: 12
+      }
+    }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
+      style: {
+        background: C.cardAlt
+      }
+    }, ["Brand", "Mfr", "Composition", "PF?", "Form", "Pack", "MRP", "Dry Eye Type", "Key Notes"].map(h => /*#__PURE__*/React.createElement("th", {
+      key: h,
+      style: {
+        padding: "8px 8px",
+        textAlign: "left",
+        fontWeight: 700,
+        color: C.navy,
+        fontSize: 9,
+        textTransform: "uppercase",
+        letterSpacing: 0.8,
+        borderBottom: `1px solid ${C.border}`,
+        whiteSpace: "nowrap"
+      }
+    }, h)))), /*#__PURE__*/React.createElement("tbody", null, cat.brands.map((b, i) => /*#__PURE__*/React.createElement("tr", {
+      key: i,
+      style: {
+        borderBottom: `1px solid ${C.borderLight}`,
+        background: i % 2 === 0 ? "#fff" : C.cardAlt
+      }
+    }, /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px",
+        fontWeight: 600,
+        color: C.navy,
+        whiteSpace: "nowrap",
+        fontSize: 12
+      }
+    }, b.brand), /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px",
+        color: C.textSec,
+        whiteSpace: "nowrap",
+        fontSize: 11
+      }
+    }, b.mfr), /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px",
+        color: C.text,
+        fontFamily: "monospace",
+        fontSize: 10.5
+      }
+    }, b.composition), /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px",
+        textAlign: "center"
+      }
+    }, b.pf.includes("PF") || b.pf.includes("✅") ? /*#__PURE__*/React.createElement("span", {
+      style: {
+        background: C.tealLight,
+        color: C.teal,
+        padding: "2px 8px",
+        borderRadius: 20,
+        fontSize: 9,
+        fontWeight: 700
+      }
+    }, "PF") : b.pf === "N/A" ? /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: C.textMuted,
+        fontSize: 9
+      }
+    }, "N/A") : /*#__PURE__*/React.createElement("span", {
+      style: {
+        background: C.coralLight,
+        color: C.coral,
+        padding: "2px 6px",
+        borderRadius: 20,
+        fontSize: 8,
+        fontWeight: 600
+      }
+    }, b.pf.replace("No (", "").replace(")", ""))), /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px",
+        color: C.textSec,
+        fontSize: 11
+      }
+    }, b.form), /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px",
+        color: C.textSec,
+        fontSize: 11,
+        whiteSpace: "nowrap"
+      }
+    }, b.pack), /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px",
+        fontWeight: 600,
+        color: C.teal,
+        whiteSpace: "nowrap",
+        fontSize: 11
+      }
+    }, b.price), /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 3,
+        flexWrap: "wrap"
+      }
+    }, getBadges(b.dryEye).map(badge => {
+      const s = BADGES[badge] || BADGES.General;
+      return /*#__PURE__*/React.createElement("span", {
+        key: badge,
+        style: {
+          fontSize: 8,
+          padding: "2px 6px",
+          borderRadius: 10,
+          background: s.bg,
+          color: s.text,
+          fontWeight: 600,
+          whiteSpace: "nowrap"
+        }
+      }, s.label || badge);
+    }))), /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "8px",
+        color: C.textSec,
+        fontSize: 11,
+        maxWidth: 240,
+        lineHeight: 1.4
+      }
+    }, b.special.startsWith("★") ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: C.coral
+      }
+    }, "\u2605"), b.special.slice(1)) : b.special))))))));
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 20,
+      padding: "16px 18px",
+      background: "#fff",
+      borderRadius: 12,
+      border: `1px solid ${C.border}`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: C.navy,
+      letterSpacing: 1,
+      textTransform: "uppercase",
+      marginBottom: 8
+    }
+  }, "Notes & Legend"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: C.textSec,
+      lineHeight: 1.8
+    }
+  }, /*#__PURE__*/React.createElement("div", null, "\u2022 ", /*#__PURE__*/React.createElement("strong", null, "PF = Preservative-Free."), " Mandatory when dosing >4\xD7/day, post-op, contact lens, or corneal epitheliopathy."), /*#__PURE__*/React.createElement("div", null, "\u2022 ", /*#__PURE__*/React.createElement("strong", null, "Preservative hierarchy (least \u2192 most toxic):"), " COMOD/ABAK (PF) \u2192 Polyquad \u2192 GenAqua \u2192 Purite/SOC \u2192 BAK."), /*#__PURE__*/React.createElement("div", null, "\u2022 ", /*#__PURE__*/React.createElement("strong", null, "BAK toxicity:"), " Disrupts lipid layer + damages epithelium + reduces goblet cells. Clinically significant at >4 drops/day."), /*#__PURE__*/React.createElement("div", null, "\u2022 Prices are approximate MRP (2025\u201326). ", /*#__PURE__*/React.createElement("strong", null, "*"), " = Import, specialty, or US pricing."), /*#__PURE__*/React.createElement("div", null, "\u2022 ", /*#__PURE__*/React.createElement("strong", null, "ADDE"), " = Aqueous Deficient. ", /*#__PURE__*/React.createElement("strong", null, "EDE"), " = Evaporative (MGD). ", /*#__PURE__*/React.createElement("strong", null, "CL-DED"), " = Contact Lens related.")))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      borderTop: `1px solid ${C.border}`,
+      padding: "16px 20px",
+      textAlign: "center",
+      background: "#fff",
+      marginTop: 32
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: C.textMuted,
+      lineHeight: 1.6,
+      maxWidth: 600,
+      margin: "0 auto"
+    }
+  }, "For educational and informational purposes only. This tool does not constitute medical advice, diagnosis, or treatment recommendation. Dry eye management requires comprehensive evaluation by a qualified ophthalmologist. Brand availability and pricing may vary. The creator is not liable for any clinical decisions or outcomes based on this tool."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: C.coral,
+      fontWeight: 600,
+      marginTop: 6
+    }
+  }, "\xA9 Dr. Rashmi Pahwa, MD \u2014 Clinical Tools for Eye Care Professionals")));
+}
+const root=ReactDOM.createRoot(document.getElementById('root'));root.render(React.createElement(App));
+</script></body></html>
